@@ -1,107 +1,716 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>List of Softwares using for Web Development</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="A curated list of useful software and tools for web development, including code editors, local servers, WordPress tools, file management, Git, design and developer utilities.">
+<meta name="keywords" content="web development software, web developer tools, code editor, WordPress development, PHP development, Git, local server, developer tools">
+<meta name="author" content="Royal Technologies">
+
+<title>Web Development Software & Tools | Royal Technologies</title>
+
 <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f7fb;
+        color: #1f2937;
+        line-height: 1.6;
+    }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-tr:hover{
-	background-color: #9cd0cb;
-	cursor:pointer;
-}
-tr th {
-	background-color: rgb(0, 153, 255);
-	color:#fff;
-}
+    a {
+        color: inherit;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #0077ff, #0056d6);
+        color: #fff;
+        padding: 55px 20px 45px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: clamp(30px, 5vw, 52px);
+        margin-bottom: 12px;
+        font-weight: 700;
+    }
+
+    .hero p {
+        max-width: 800px;
+        margin: auto;
+        font-size: 17px;
+        opacity: 0.92;
+    }
+
+    .container {
+        width: min(1200px, calc(100% - 30px));
+        margin: auto;
+    }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: -30px;
+        position: relative;
+    }
+
+    .stat {
+        background: #fff;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .stat strong {
+        display: block;
+        font-size: 28px;
+        color: #0077ff;
+        margin-bottom: 3px;
+    }
+
+    .stat span {
+        color: #64748b;
+        font-size: 14px;
+    }
+
+    .toolbar {
+        margin: 30px 0 20px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .search {
+        flex: 1;
+        min-width: 250px;
+        padding: 14px 17px;
+        border: 1px solid #d7dee8;
+        border-radius: 10px;
+        font-size: 15px;
+        outline: none;
+        background: #fff;
+    }
+
+    .search:focus {
+        border-color: #0077ff;
+        box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.1);
+    }
+
+    .filter {
+        padding: 14px 16px;
+        border: 1px solid #d7dee8;
+        border-radius: 10px;
+        background: #fff;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .table-wrapper {
+        background: #fff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+        margin-bottom: 40px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        background: #0077ff;
+        color: #fff;
+        padding: 16px;
+        text-align: left;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    td {
+        padding: 15px 16px;
+        border-bottom: 1px solid #edf0f4;
+        vertical-align: middle;
+        font-size: 14px;
+    }
+
+    tbody tr {
+        transition: 0.2s ease;
+    }
+
+    tbody tr:hover {
+        background: #eef7ff;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .software-name {
+        font-weight: 700;
+        color: #111827;
+    }
+
+    .category {
+        display: inline-block;
+        background: #eaf4ff;
+        color: #0067d9;
+        padding: 5px 9px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .purpose {
+        color: #475569;
+    }
+
+    .visit {
+        display: inline-block;
+        background: #0077ff;
+        color: #fff;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 7px;
+        font-size: 12px;
+        font-weight: 600;
+        transition: 0.2s ease;
+        white-space: nowrap;
+    }
+
+    .visit:hover {
+        background: #005dcc;
+        transform: translateY(-1px);
+    }
+
+    .info-section {
+        background: #fff;
+        border-radius: 14px;
+        padding: 30px;
+        margin-bottom: 40px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .info-section h2 {
+        font-size: 25px;
+        margin-bottom: 12px;
+        color: #111827;
+    }
+
+    .info-section p {
+        color: #64748b;
+        margin-bottom: 10px;
+    }
+
+    .categories {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .category-card {
+        padding: 20px;
+        border: 1px solid #e5eaf0;
+        border-radius: 10px;
+        background: #fafcff;
+    }
+
+    .category-card h3 {
+        color: #0077ff;
+        margin-bottom: 7px;
+        font-size: 17px;
+    }
+
+    .category-card p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .footer {
+        background: #111827;
+        color: #cbd5e1;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .footer strong {
+        color: #fff;
+    }
+
+    .footer a {
+        color: #60a5fa;
+        text-decoration: none;
+    }
+
+    .empty {
+        display: none;
+        padding: 30px;
+        text-align: center;
+        color: #64748b;
+    }
+
+    @media (max-width: 850px) {
+        .stats {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .categories {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            min-width: 850px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .hero {
+            padding: 40px 15px;
+        }
+
+        .stats {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .categories {
+            grid-template-columns: 1fr;
+        }
+
+        .info-section {
+            padding: 20px;
+        }
+
+        .toolbar {
+            flex-direction: column;
+        }
+
+        .search,
+        .filter {
+            width: 100%;
+        }
+    }
 </style>
 </head>
+
 <body>
 
-<h1>List of Softwares using for Web Development</h1>
-<table style="width:100%">
-  <tr>
-    <th>Name</th>
-    <th>Purpose</th>
-    <th>URL</th>
-  </tr>
-  <tr>
-    <td>grepWin</td>
-    <td>Search & Replace content inside Files </td>
-    <td><a href="https://tools.stefankueng.com/grepWin.html" target="_blank">https://tools.stefankueng.com/grepWin.html</a></td>
-  </tr>
+<header class="hero">
+    <div class="container">
+        <h1>Web Development Software</h1>
+        <p>
+            A curated collection of useful software, applications and developer tools
+            for web designers, developers and WordPress professionals.
+        </p>
+    </div>
+</header>
 
-  <tr>
-    <td>ShareX</td>
-    <td>Screenshot</td>
-    <td><a href="https://getsharex.com/downloads" target="_blank">https://getsharex.com/downloads</a></td>
-  </tr>
-  <tr>
-    <td>Google Antigravity</td>
-    <td>Code Editor</td>
-    <td><a href="https://antigravity.google" target="_blank">https://antigravity.google</a></td>
-  </tr>
-<tr>
-    <td>Antigravity Manager</td>
-    <td>Antigravity Account Manager & Switcher</td>
-    <td><a href="https://github.com/lbjlaq/Antigravity-Manager" target="_blank">https://github.com/lbjlaq/Antigravity-Manager</a></td>
-  </tr>
-<tr>
-    <td>Visual Studio Code</td>
-    <td>Code Editor</td>
-    <td><a href="https://code.visualstudio.com/Download" target="_blank">https://code.visualstudio.com/Download</a></td>
-  </tr>	
-  <tr>
-    <td>Notepad++</td>
-    <td>Code Editor</td>
-    <td><a href="https://notepad-plus-plus.org/downloads/" target="_blank">https://notepad-plus-plus.org/downloads/</a></td>
-  </tr>	
-  <tr>
-    <td>Just Color Picker</td>
-    <td>Color Picker</td>
-    <td><a href="https://annystudio.com/software/colorpicker/#download" target="_blank">https://annystudio.com/software/colorpicker/</a></td>
-  </tr>
-  <tr>
-    <td>Pixie </td>
-    <td>Color Picker</td>
-    <td><a href="http://www.nattyware.com/pixie.php" target="_blank">http://www.nattyware.com/pixie.php</a></td>
-  </tr>	
-  <tr>
-    <td>Laragon/</td>
-    <td>Apache Server</td>
-    <td><a href="https://laragon.org" target="_blank">https://laragon.org</a></td>
-  </tr>
-	<tr>
-    <td>XAMPP</td>
-    <td>Apache Server</td>
-    <td><a href="https://www.apachefriends.org/download.html" target="_blank">https://www.apachefriends.org/download.html</a></td>
-  </tr>
-<tr>
-    <td>Local WP</td>
-    <td>WordPress development tool</td>
-    <td><a href="https://localwp.com" target="_blank">https://localwp.com</a></td>
-  </tr>
-  <tr>
-    <td>Everything </td>
-    <td>Local Files and Folders Search</td>
-    <td><a href="https://www.voidtools.com/downloads/" target="_blank">https://www.voidtools.com/downloads/</a></td>
-  </tr>  
-  <tr>
-    <td>Git</td>
-    <td>Github</td>
-    <td><a href="https://desktop.github.com" target="_blank">https://www.git-scm.com/</a></td>
-  </tr>  
+<main class="container">
+
+    <section class="stats">
+        <div class="stat">
+            <strong id="totalTools">0</strong>
+            <span>Tools Listed</span>
+        </div>
+
+        <div class="stat">
+            <strong>10+</strong>
+            <span>Categories</span>
+        </div>
+
+        <div class="stat">
+            <strong>Free</strong>
+            <span>Useful Resources</span>
+        </div>
+
+        <div class="stat">
+            <strong>Web</strong>
+            <span>Development Focused</span>
+        </div>
+    </section>
+
+    <div class="toolbar">
+        <input
+            type="search"
+            id="searchInput"
+            class="search"
+            placeholder="Search software, purpose or category..."
+            aria-label="Search software"
+        >
+
+        <select id="categoryFilter" class="filter" aria-label="Filter by category">
+            <option value="all">All Categories</option>
+            <option value="Code Editor">Code Editors</option>
+            <option value="Development Environment">Development Environment</option>
+            <option value="WordPress">WordPress</option>
+            <option value="Server">Servers</option>
+            <option value="File Management">File Management</option>
+            <option value="Git & Version Control">Git & Version Control</option>
+            <option value="Design">Design</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Database">Database</option>
+            <option value="API & Testing">API & Testing</option>
+        </select>
+    </div>
+
+    <div class="table-wrapper">
+
+        <table id="softwareTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Software</th>
+                    <th>Category</th>
+                    <th>Purpose</th>
+                    <th>Website</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr data-category="Utilities">
+                    <td>1</td>
+                    <td class="software-name">grepWin</td>
+                    <td><span class="category">Utilities</span></td>
+                    <td class="purpose">Search and replace content inside files</td>
+                    <td><a class="visit" href="https://tools.stefankueng.com/grepWin.html" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Utilities">
+                    <td>2</td>
+                    <td class="software-name">ShareX</td>
+                    <td><span class="category">Utilities</span></td>
+                    <td class="purpose">Screenshot, screen recording and file sharing</td>
+                    <td><a class="visit" href="https://getsharex.com/downloads" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Code Editor">
+                    <td>3</td>
+                    <td class="software-name">Google Antigravity</td>
+                    <td><span class="category">Code Editor</span></td>
+                    <td class="purpose">AI-assisted code editor and development environment</td>
+                    <td><a class="visit" href="https://antigravity.google" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Utilities">
+                    <td>4</td>
+                    <td class="software-name">Antigravity Manager</td>
+                    <td><span class="category">Utilities</span></td>
+                    <td class="purpose">Antigravity account management and switching</td>
+                    <td><a class="visit" href="https://github.com/lbjlaq/Antigravity-Manager" target="_blank" rel="noopener">GitHub</a></td>
+                </tr>
+
+                <tr data-category="Code Editor">
+                    <td>5</td>
+                    <td class="software-name">Visual Studio Code</td>
+                    <td><span class="category">Code Editor</span></td>
+                    <td class="purpose">Source code editor for web and software development</td>
+                    <td><a class="visit" href="https://code.visualstudio.com/Download" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Code Editor">
+                    <td>6</td>
+                    <td class="software-name">Notepad++</td>
+                    <td><span class="category">Code Editor</span></td>
+                    <td class="purpose">Lightweight source code and text editor</td>
+                    <td><a class="visit" href="https://notepad-plus-plus.org/downloads/" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Design">
+                    <td>7</td>
+                    <td class="software-name">Just Color Picker</td>
+                    <td><span class="category">Design</span></td>
+                    <td class="purpose">Pick and analyze colors from your screen</td>
+                    <td><a class="visit" href="https://annystudio.com/software/colorpicker/#download" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Design">
+                    <td>8</td>
+                    <td class="software-name">Pixie</td>
+                    <td><span class="category">Design</span></td>
+                    <td class="purpose">Simple and lightweight screen color picker</td>
+                    <td><a class="visit" href="http://www.nattyware.com/pixie.php" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Development Environment">
+                    <td>9</td>
+                    <td class="software-name">Laragon</td>
+                    <td><span class="category">Development Environment</span></td>
+                    <td class="purpose">Local development environment for PHP, Apache, MySQL and more</td>
+                    <td><a class="visit" href="https://laragon.org" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Server">
+                    <td>10</td>
+                    <td class="software-name">XAMPP</td>
+                    <td><span class="category">Server</span></td>
+                    <td class="purpose">Local Apache, PHP and MariaDB development environment</td>
+                    <td><a class="visit" href="https://www.apachefriends.org/download.html" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="WordPress">
+                    <td>11</td>
+                    <td class="software-name">Local</td>
+                    <td><span class="category">WordPress</span></td>
+                    <td class="purpose">Local WordPress development and testing environment</td>
+                    <td><a class="visit" href="https://localwp.com" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="File Management">
+                    <td>12</td>
+                    <td class="software-name">Everything</td>
+                    <td><span class="category">File Management</span></td>
+                    <td class="purpose">Extremely fast local files and folders search</td>
+                    <td><a class="visit" href="https://www.voidtools.com/downloads/" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Git & Version Control">
+                    <td>13</td>
+                    <td class="software-name">Git</td>
+                    <td><span class="category">Git & Version Control</span></td>
+                    <td class="purpose">Distributed version control for source code</td>
+                    <td><a class="visit" href="https://git-scm.com/downloads" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Git & Version Control">
+                    <td>14</td>
+                    <td class="software-name">GitHub Desktop</td>
+                    <td><span class="category">Git & Version Control</span></td>
+                    <td class="purpose">Desktop application for working with GitHub repositories</td>
+                    <td><a class="visit" href="https://desktop.github.com/" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="File Management">
+                    <td>15</td>
+                    <td class="software-name">WinSCP</td>
+                    <td><span class="category">File Management</span></td>
+                    <td class="purpose">Secure file transfer using SFTP, SCP and FTP</td>
+                    <td><a class="visit" href="https://winscp.net/" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="File Management">
+                    <td>16</td>
+                    <td class="software-name">FileZilla</td>
+                    <td><span class="category">File Management</span></td>
+                    <td class="purpose">FTP, FTPS and SFTP file transfer client</td>
+                    <td><a class="visit" href="https://filezilla-project.org/" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Server">
+                    <td>17</td>
+                    <td class="software-name">Docker Desktop</td>
+                    <td><span class="category">Server</span></td>
+                    <td class="purpose">Containerized development and application environments</td>
+                    <td><a class="visit" href="https://www.docker.com/products/docker-desktop/" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Database">
+                    <td>18</td>
+                    <td class="software-name">DBeaver</td>
+                    <td><span class="category">Database</span></td>
+                    <td class="purpose">Database management and SQL development</td>
+                    <td><a class="visit" href="https://dbeaver.io/" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Database">
+                    <td>19</td>
+                    <td class="software-name">HeidiSQL</td>
+                    <td><span class="category">Database</span></td>
+                    <td class="purpose">Database administration for MySQL, MariaDB and other systems</td>
+                    <td><a class="visit" href="https://www.heidisql.com/" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="API & Testing">
+                    <td>20</td>
+                    <td class="software-name">Postman</td>
+                    <td><span class="category">API & Testing</span></td>
+                    <td class="purpose">API development, testing and documentation</td>
+                    <td><a class="visit" href="https://www.postman.com/downloads/" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Design">
+                    <td>21</td>
+                    <td class="software-name">Figma</td>
+                    <td><span class="category">Design</span></td>
+                    <td class="purpose">UI/UX design, prototyping and collaboration</td>
+                    <td><a class="visit" href="https://www.figma.com/" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Code Editor">
+                    <td>22</td>
+                    <td class="software-name">Sublime Text</td>
+                    <td><span class="category">Code Editor</span></td>
+                    <td class="purpose">Fast and lightweight source code editor</td>
+                    <td><a class="visit" href="https://www.sublimetext.com/" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Utilities">
+                    <td>23</td>
+                    <td class="software-name">PuTTY</td>
+                    <td><span class="category">Utilities</span></td>
+                    <td class="purpose">SSH, Telnet and remote server access</td>
+                    <td><a class="visit" href="https://www.putty.org/" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Development Environment">
+                    <td>24</td>
+                    <td class="software-name">Node.js</td>
+                    <td><span class="category">Development Environment</span></td>
+                    <td class="purpose">JavaScript runtime for server-side and tooling development</td>
+                    <td><a class="visit" href="https://nodejs.org/en/download" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+                <tr data-category="Development Environment">
+                    <td>25</td>
+                    <td class="software-name">Composer</td>
+                    <td><span class="category">Development Environment</span></td>
+                    <td class="purpose">Dependency manager for PHP projects</td>
+                    <td><a class="visit" href="https://getcomposer.org/download/" target="_blank" rel="noopener">Visit</a></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div id="emptyMessage" class="empty">
+            No software found matching your search.
+        </div>
+
+    </div>
+
+    <section class="info-section">
+
+        <h2>About This Collection</h2>
+
+        <p>
+            This page is a practical collection of software commonly useful for
+            web development, WordPress development, server management, coding,
+            database management, UI design and everyday developer tasks.
+        </p>
+
+        <p>
+            The list is intended as a quick reference. Software can be added,
+            removed or updated as development requirements change.
+        </p>
+
+        <div class="categories">
+
+            <div class="category-card">
+                <h3>Code Editors</h3>
+                <p>Tools for writing, editing and managing HTML, CSS, JavaScript, PHP and other source code.</p>
+            </div>
+
+            <div class="category-card">
+                <h3>Local Development</h3>
+                <p>Run PHP, WordPress, Apache, MySQL and other development environments locally.</p>
+            </div>
+
+            <div class="category-card">
+                <h3>WordPress</h3>
+                <p>Tools for developing, testing and maintaining WordPress websites locally.</p>
+            </div>
+
+            <div class="category-card">
+                <h3>Git & Version Control</h3>
+                <p>Manage source code versions, repositories, branches and collaborative development.</p>
+            </div>
+
+            <div class="category-card">
+                <h3>Database</h3>
+                <p>Manage MySQL, MariaDB and other databases used by web applications.</p>
+            </div>
+
+            <div class="category-card">
+                <h3>Design</h3>
+                <p>Useful applications for UI design, color selection, screenshots and visual development.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>
+        <strong>Web Development Software Directory</strong>
+    </p>
+
+    <p>
+        Maintained by
+        <a href="https://www.royaltechbd.com/" target="_blank" rel="noopener">
+            Royal Technologies
+        </a>
+    </p>
+
+    <p>
+        <a href="https://github.com/Royal-Technologies" target="_blank" rel="noopener">
+            GitHub
+        </a>
+        &nbsp; | &nbsp;
+        <a href="https://www.royaltechbd.com/" target="_blank" rel="noopener">
+            Royal Technologies
+        </a>
+    </p>
+</footer>
+
+<script>
+
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const rows = document.querySelectorAll("#softwareTable tbody tr");
+    const emptyMessage = document.getElementById("emptyMessage");
+    const totalTools = document.getElementById("totalTools");
+
+    totalTools.textContent = rows.length;
+
+    function filterTable() {
+
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const selectedCategory = categoryFilter.value;
+
+        let visibleRows = 0;
+
+        rows.forEach(row => {
+
+            const text = row.textContent.toLowerCase();
+            const category = row.dataset.category;
+
+            const matchesSearch = text.includes(searchTerm);
+
+            const matchesCategory =
+                selectedCategory === "all" ||
+                category === selectedCategory;
+
+            if (matchesSearch && matchesCategory) {
+                row.style.display = "";
+                visibleRows++;
+            } else {
+                row.style.display = "none";
+            }
+
+        });
+
+        emptyMessage.style.display =
+            visibleRows === 0 ? "block" : "none";
+    }
+
+    searchInput.addEventListener("input", filterTable);
+    categoryFilter.addEventListener("change", filterTable);
+
+</script>
+
 </body>
 </html>
